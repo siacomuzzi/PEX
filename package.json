@@ -29,7 +29,9 @@
     "test:lint": "eslint . --ext .ts",
     "test:prettier": "prettier \"{lib,test}/**/*.ts\" --list-different",
     "test:unit": "jest",
-    "test:cov": "jest --ci --coverage && codecov"
+    "test:cov": "jest --ci --coverage && codecov",
+    "prepare": "npm run build",
+    "prepack": "npm run build"
   },
   "engines": {
     "node": ">=14"
