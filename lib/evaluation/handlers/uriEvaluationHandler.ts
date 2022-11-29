@@ -97,6 +97,13 @@ export class UriEvaluationHandler extends AbstractEvaluationHandler {
     } else if (credential.credentialSchema) {
       uris.push((credential.credentialSchema as ICredentialSchema).id);
     }
+    // review: JWT VC Presentation Profile uses `cred.type` as `cred.credentialSchema`
+    // https://identity.foundation/jwt-vc-presentation-profile/#out-of-scope
+    if (Array.isArray(credential.type)) {
+      credential.type.forEach((element) => uris.push(element));
+    } else if (credential.type) {
+      uris.push(credential.type);
+    }
     return uris;
   }
 
